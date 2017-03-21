@@ -19,7 +19,7 @@ public class UnitServiceImpl implements UnitService {
 	@Autowired
 	UnitRepository unitRepository;
 	
-	//@Autowired
+//	@Autowired
 	ViewRepository viewRepository;
 
 	@Override
