@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.property.mgt.domain.Property;
+import com.property.mgt.domain.PropertyStaff;
 import com.property.mgt.repository.PropertyRepository;
+import com.property.mgt.repository.PropertyStaffRepository;
 import com.property.mgt.service.PropertyService;
 
 @Service
@@ -16,6 +18,9 @@ public class PropertyServiceImpl implements PropertyService {
 	
 	@Autowired
 	PropertyRepository propertyRepository;
+	
+	//@Autowired
+	PropertyStaffRepository propertyStaffRepository;
 
 	@Override
 	public void saveProperty(Property property) {
@@ -35,6 +40,16 @@ public class PropertyServiceImpl implements PropertyService {
 	@Override
 	public void deleteProperty(long propertyId) {
 		propertyRepository.delete(propertyId); 
+	}
+
+	@Override
+	public List<PropertyStaff> findPropertiesByStaffId(long staffId) {
+		return propertyStaffRepository.findPropertiesByStaffId(staffId);
+	}
+
+	@Override
+	public List<PropertyStaff> findPropertiesByPropertyId(long propertyId) {
+		return propertyStaffRepository.findPropertiesByPropertyId(propertyId);
 	}
 
 }

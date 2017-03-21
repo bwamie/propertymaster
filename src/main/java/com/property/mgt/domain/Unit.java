@@ -1,10 +1,15 @@
 package com.property.mgt.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Unit {
@@ -16,6 +21,8 @@ public class Unit {
 	private String unitNumber;
 	private String size;
 	private String description;
+	@OneToMany(mappedBy = "unit", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<View> viewList;
 	
 	public Unit(){
 		
@@ -51,6 +58,14 @@ public class Unit {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public List<View> getViewList() {
+		return viewList;
+	}
+
+	public void setViewList(List<View> viewList) {
+		this.viewList = viewList;
 	}
 	
 	
