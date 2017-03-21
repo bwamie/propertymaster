@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
@@ -13,9 +13,11 @@
 
 <title><tiles:insertAttribute name="title" /></title>
 
-<link href="http://getbootstrap.com/dist/css/bootstrap.css"	rel="stylesheet">
+<link href="http://getbootstrap.com/dist/css/bootstrap.css"
+	rel="stylesheet">
 
-<link href="http://getbootstrap.com/examples/jumbotron/jumbotron.css"	rel="stylesheet">
+<link href="http://getbootstrap.com/examples/jumbotron/jumbotron.css"
+	rel="stylesheet">
 
 </head>
 
@@ -26,18 +28,23 @@
 			<ul class="nav nav-pills pull-right">
 				<tiles:insertAttribute name="navigation" />
 			</ul>
-			<h3 class="text-muted">Web Store</h3>
+			<h1 class="text-muted">Property Management</h1>
 		</div>
+		
+		<hr />
+		
+		<h2>
+				<tiles:insertAttribute name="heading" />
+			</h2>
 
-
-		<div class="jumbotron">
+		<%-- <div class="jumbotron">
 			<h1>
 				<tiles:insertAttribute name="heading" />
 			</h1>
 			<p>
 				<tiles:insertAttribute name="tagline" />
 			</p>
-		</div>
+		</div> --%>
 
 		<div class="row">
 			<tiles:insertAttribute name="body" />
