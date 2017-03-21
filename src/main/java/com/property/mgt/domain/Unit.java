@@ -24,6 +24,12 @@ public class Unit {
 	@OneToMany(mappedBy = "unit", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<View> viewList;
 	
+	@OneToMany(mappedBy = "unit", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Payment> paymentsList;
+	
+	@OneToMany(mappedBy = "unit", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Payment> preferenceList;
+	
 	public Unit(){
 		
 	}
@@ -66,6 +72,22 @@ public class Unit {
 
 	public void setViewList(List<View> viewList) {
 		this.viewList = viewList;
+	}
+
+	public List<Payment> getPaymentsList() {
+		return paymentsList;
+	}
+
+	public void setPaymentsList(List<Payment> paymentsList) {
+		this.paymentsList = paymentsList;
+	}
+
+	public List<Payment> getPreferenceList() {
+		return preferenceList;
+	}
+
+	public void setPreferenceList(List<Payment> preferenceList) {
+		this.preferenceList = preferenceList;
 	}
 	
 	

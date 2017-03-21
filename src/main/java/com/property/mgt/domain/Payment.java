@@ -1,10 +1,14 @@
 package com.property.mgt.domain;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Payment {
@@ -13,5 +17,62 @@ public class Payment {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id")
 	private long paymentId;
-
+	
+	private int month;
+	private int year;
+	private double amount;
+	private String paymentMethod;
+	private Date paymentDate;
+	//@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name = "unit_id", referencedColumnName = "id")
+	@ManyToOne
+	private Unit unit;
+	
+	public Payment(){
+		
+	}
+	
+	public long getPaymentId() {
+		return paymentId;
+	}
+	public void setPaymentId(long paymentId) {
+		this.paymentId = paymentId;
+	}
+	public int getMonth() {
+		return month;
+	}
+	public void setMonth(int month) {
+		this.month = month;
+	}
+	public int getYear() {
+		return year;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+	public double getAmount() {
+		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+	public String getPaymentMethod() {
+		return paymentMethod;
+	}
+	public void setPaymentMethod(String paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
+	public Date getPaymentDate() {
+		return paymentDate;
+	}
+	public void setPaymentDate(Date paymentDate) {
+		this.paymentDate = paymentDate;
+	}
+	public Unit getUnit() {
+		return unit;
+	}
+	public void setUnit(Unit unit) {
+		this.unit = unit;
+	}
+	
 }
