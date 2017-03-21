@@ -1,4 +1,4 @@
-package com.property.mgt.domain;
+package com.property.mgt.domain2;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -21,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.property.mgt.validator.ProductId;
 
-// @Entity
+ @Entity
 public class Product implements Serializable {
     private static final long serialVersionUID = 1L;
 
