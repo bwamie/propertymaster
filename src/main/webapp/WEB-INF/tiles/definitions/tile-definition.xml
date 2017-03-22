@@ -59,9 +59,14 @@
  		<put-attribute name="body" value="/WEB-INF/jsp/productNotFound.jsp" />
 	</definition>
 	
-	<definition name="testPage" extends="baseLayout">
+<!-- 	<definition name="testPage" extends="baseLayout">
 		<put-attribute name="title" value="Test Page" />
  		<put-attribute name="body" value="/WEB-INF/jsp/test.jsp" />
-	</definition>
+	</definition> -->
+	
+<!-- 	<definition name="propertyPage" extends="baseLayout">
+		<put-attribute name="title" value="Manage Property" />
+ 		<put-attribute name="body" value="/WEB-INF/jsp/property/property.jsp" />
+	</definition> -->
 	 	
 </tiles-definitions>
