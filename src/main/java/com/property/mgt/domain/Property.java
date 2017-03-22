@@ -1,5 +1,6 @@
 package com.property.mgt.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -28,9 +29,12 @@ public class Property {
 	private String address;
 	private String city;
 	private String state;
+	private int zipCode;
 	private String status;
 	@OneToMany(mappedBy = "property", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<PropertyStaff> propertyStaffList;
+	private List<PropertyStaff> propertyStaffList= new ArrayList<>();
+	@OneToMany(mappedBy = "property", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Unit> unitList = new ArrayList<>();
 
 	public long getPropertyId() {
 		return propertyId;
@@ -104,5 +108,22 @@ public class Property {
 		this.propertyStaffList = propertyStaffList;
 	}
 
+	public int getZipCode() {
+		return zipCode;
+	}
+
+	public void setZipCode(int zipCode) {
+		this.zipCode = zipCode;
+	}
+
+	public List<Unit> getUnitList() {
+		return unitList;
+	}
+
+	public void setUnitList(List<Unit> unitList) {
+		this.unitList = unitList;
+	}
+
+	
 	
 }

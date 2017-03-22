@@ -13,6 +13,7 @@ public class Building extends Property {
 //	@GeneratedValue(strategy=GenerationType.AUTO)
 //	@Column(name="id")
 	private long propertyId;
+	private int floors;
 
 	public Building(){
 		
@@ -26,5 +27,14 @@ public class Building extends Property {
 		this.propertyId = propertyId;
 	}
 
+	public int getFloors() {
+		return floors;
+	}
+
+	public void setFloors(int floors) {
+		this.floors = floors;
+	}
+
+	
 	
 }

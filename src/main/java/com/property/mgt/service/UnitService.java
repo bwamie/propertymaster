@@ -12,7 +12,7 @@ public interface UnitService {
 
 	public void saveUnit(Unit unit);
 
-	public void findOneUnitById(long propertyId);
+	public Unit findOneUnitById(long propertyId);
 
 	public List<Unit> findAll();
 	

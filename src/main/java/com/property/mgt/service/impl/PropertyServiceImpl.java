@@ -1,11 +1,13 @@
 package com.property.mgt.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.property.mgt.domain.Building;
 import com.property.mgt.domain.Property;
 import com.property.mgt.domain.PropertyStaff;
 import com.property.mgt.repository.PropertyRepository;
@@ -15,11 +17,11 @@ import com.property.mgt.service.PropertyService;
 @Service
 @Transactional
 public class PropertyServiceImpl implements PropertyService {
-	
+
 	@Autowired
 	PropertyRepository propertyRepository;
-	
-	//@Autowired
+
+	 @Autowired
 	PropertyStaffRepository propertyStaffRepository;
 
 	@Override
@@ -28,18 +30,18 @@ public class PropertyServiceImpl implements PropertyService {
 	}
 
 	@Override
-	public void findOnePropertyById(long propertyId) {
-		propertyRepository.findOne(propertyId);
+	public Property findOnePropertyById(long propertyId) {
+		return propertyRepository.findOne(propertyId);
 	}
 
 	@Override
 	public List<Property> findAll() {
-		return (List<Property>)propertyRepository.findAll();
+		return (List<Property>) propertyRepository.findAll();
 	}
 
 	@Override
 	public void deleteProperty(long propertyId) {
-		propertyRepository.delete(propertyId); 
+		propertyRepository.delete(propertyId);
 	}
 
 	@Override
@@ -50,6 +52,18 @@ public class PropertyServiceImpl implements PropertyService {
 	@Override
 	public List<PropertyStaff> findPropertiesByPropertyId(long propertyId) {
 		return propertyStaffRepository.findPropertiesByPropertyId(propertyId);
+	}
+
+	@Override
+	public List<Property> findAllBuildings() {
+		List<Property> properties = (List<Property>) propertyRepository
+				.findAll();
+//		List<Property> properties2 = new ArrayList<>();
+//		 properties.stream()
+//				.filter(property -> (property instanceof Building))
+//				.forEach(property->{properties2.add(property);});
+//		return properties2;
+		return properties;
 	}
 
 }

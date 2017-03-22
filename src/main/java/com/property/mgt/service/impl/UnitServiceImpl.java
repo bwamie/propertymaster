@@ -28,8 +28,8 @@ public class UnitServiceImpl implements UnitService {
 	}
 
 	@Override
-	public void findOneUnitById(long propertyId) {
-		unitRepository.findOne(propertyId);
+	public Unit findOneUnitById(long propertyId) {
+		return unitRepository.findOne(propertyId);
 	}
 
 	@Override

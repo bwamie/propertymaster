@@ -12,7 +12,7 @@ public interface PropertyService {
 	
 	public void saveProperty(Property property);
 	
-	public void findOnePropertyById(long propertyId);
+	public Property findOnePropertyById(long propertyId);
 
 	public List<Property> findAll();
 	
@@ -21,4 +21,6 @@ public interface PropertyService {
 	public List<PropertyStaff> findPropertiesByStaffId(long staffId);
 	
 	public List<PropertyStaff> findPropertiesByPropertyId(long propertyId);
+	
+	public List<Property> findAllBuildings();
 }

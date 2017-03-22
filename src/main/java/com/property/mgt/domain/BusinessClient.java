@@ -23,4 +23,22 @@ public class BusinessClient extends Client {
 	public BusinessClient(){
 		
 	}
+
+	public long getBusinessCLientId() {
+		return businessCLientId;
+	}
+
+	public void setBusinessCLientId(long businessCLientId) {
+		this.businessCLientId = businessCLientId;
+	}
+
+	public Business getBusiness() {
+		return business;
+	}
+
+	public void setBusiness(Business business) {
+		this.business = business;
+	}
+	
+	
 }

@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -21,6 +23,9 @@ public class Unit {
 	private String unitNumber;
 	private String size;
 	private String description;
+	private String unitType;
+	private String status;
+	private int rooms;
 	@OneToMany(mappedBy = "unit", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<View> viewList;
 	
@@ -29,6 +34,9 @@ public class Unit {
 	
 	@OneToMany(mappedBy = "unit", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Payment> preferenceList;
+	@ManyToOne
+	@JoinColumn(name = "property_id", referencedColumnName = "id")
+	private Property property;
 	
 	public Unit(){
 		
@@ -89,6 +97,39 @@ public class Unit {
 	public void setPreferenceList(List<Payment> preferenceList) {
 		this.preferenceList = preferenceList;
 	}
+
+	public String getUnitType() {
+		return unitType;
+	}
+
+	public void setUnitType(String unitType) {
+		this.unitType = unitType;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public int getRooms() {
+		return rooms;
+	}
+
+	public void setRooms(int rooms) {
+		this.rooms = rooms;
+	}
+
+	public Property getProperty() {
+		return property;
+	}
+
+	public void setProperty(Property property) {
+		this.property = property;
+	}
+	
 	
 	
 }
