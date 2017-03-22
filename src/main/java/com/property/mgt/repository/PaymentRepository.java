@@ -12,7 +12,7 @@ public interface PaymentRepository extends CrudRepository<Payment, Long> {
 //	@Query("SELECT lp FROM Payment p WHERE p.client.clientId =: clientId ")
 //	List<Payment> findPaymentByClientId(long clientId);
 
-	@Query("SELECT p FROM Payment p WHERE lp.unit.unitId =: unitId ")
+	@Query("SELECT p FROM Payment p WHERE lp.unit.unitId =:unitId ")
 	List<Payment> findPaymentByUnitId(long unitId);
 
 }

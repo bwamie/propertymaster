@@ -12,10 +12,10 @@ import com.property.mgt.domain.PropertyStaff;
 @Repository
 public interface PropertyStaffRepository extends CrudRepository<PropertyStaff, Long> {
 	
-	@Query("SELECT ps FROM PropertyStaff ps WHERE staff.staffId =: staffId ")
+	@Query("SELECT ps FROM PropertyStaff ps WHERE staff.staffId =:staffId ")
 	public List<PropertyStaff> findPropertiesByStaffId(@Param("staffId") long staffId);
 	
-	@Query("SELECT ps FROM PropertyStaff ps WHERE property.propertyId =: propertyId ")
+	@Query("SELECT ps FROM PropertyStaff ps WHERE property.propertyId =:propertyId ")
 	public List<PropertyStaff> findPropertiesByPropertyId(@Param("propertyId") long propertyId);
 
 }

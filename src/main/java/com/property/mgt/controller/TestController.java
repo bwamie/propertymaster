@@ -28,10 +28,10 @@ public class TestController {
 	
 	@RequestMapping(value="/saveTest", method=RequestMethod.GET)
 	public String saveTest(Model model){
-		System.out.println("Saving....testingvvvv");
+		System.out.println("Saving....testingvvvv----");
 		model.addAttribute("test", "Hello test");
 		saveOwner();
-		System.out.println("Saving complete....testingvvv");
+		System.out.println("Saving complete....testingvvv----");
 		return "test";
 	}
 	

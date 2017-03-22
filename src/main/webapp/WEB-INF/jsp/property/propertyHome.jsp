@@ -9,6 +9,6 @@
 </head>
 <body>
 <h3>Property Management</h3>
-<a href="/property/addProperty">Add Property</a>
+<a href="<spring:url value="/property/register" />">Register Property</a>
 </body>
 </html>

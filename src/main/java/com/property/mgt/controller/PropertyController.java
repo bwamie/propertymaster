@@ -11,20 +11,21 @@ import com.property.mgt.domain.Building;
 import com.property.mgt.service.PropertyService;
 
 @Controller
+@RequestMapping("/property")
 public class PropertyController {
 
 	@Autowired
 	PropertyService propertyService;
 	
-	@RequestMapping(value = {"/propertyHome"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/home"}, method = RequestMethod.GET)
 	public String propertyHome() {
 		System.out.println("Helloooo");
 		return "property/propertyHome";
 	}
 
-	@RequestMapping(value = "/addProperty", method = RequestMethod.GET)
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String addProperty(@ModelAttribute("building") Building building) {
-		return "property/addProperty";
+		return "property/register";
 	}
 
 	@RequestMapping(value = "/addBuilding", method = RequestMethod.GET)

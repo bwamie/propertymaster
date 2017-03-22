@@ -44,7 +44,8 @@ public class LeaseServiceImpl implements LeaseService {
 
 	@Override
 	public List<Lease> findLeasesByUnitId(long unitId) {
-		return (List<Lease>)leaseRepository.findLeasesByUnitId(unitId);
+		//return (List<Lease>)leaseRepository.findLeasesByUnitId(unitId);
+		return null;
 	}
 
 }
