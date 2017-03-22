@@ -7,9 +7,9 @@ import com.property.mgt.domain.Unit;
 import com.property.mgt.domain.View;
 
 public interface LeaseService {
-	public void saveUnit(Lease lease);
+	public void saveLease(Lease lease);
 
-	public void findOneUnitById(long propertyId);
+	public Lease findOneLeaseById(long propertyId);
 
 	public List<Lease> findAll();
 	

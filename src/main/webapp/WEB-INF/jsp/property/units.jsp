@@ -11,7 +11,7 @@
 <body>
  	<section class="container">
 		<div class="row">
-			<c:forEach items="${units}" var="building">
+			<c:forEach items="${units}" var="unit">
 				<div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
 					<div class="thumbnail">
 					<%-- <img src="<c:url value="/resource/images/${building.propertyId}.png"></c:url>" alt="image"  style = "width:100%"/> --%>
@@ -24,7 +24,7 @@
 							<p>Status: ${unit.status}</p>
 							<p>
 								<a
-									href=" <spring:url value="/property/building/${building.propertyId}" /> "
+									href=" <spring:url value="/property/unit/${unit.unitId}" /> "
 									class="btn btn-primary"> <span
 									class="glyphicon-info-sign glyphicon" /></span> more...
 								</a>

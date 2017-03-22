@@ -1,5 +1,6 @@
 package com.property.mgt.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -25,6 +26,10 @@ public abstract class Client {
 	private Date startDate;
 	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<View> viewList;
+	@OneToMany(mappedBy = "unit", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Payment> paymentsList = new ArrayList<>();
+	@OneToMany(mappedBy = "unit", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Lease> leaseList = new ArrayList<>();
 
 	public long getClientId() {
 		return clientId;
@@ -50,5 +55,20 @@ public abstract class Client {
 		this.viewList = viewList;
 	}
 
-	
+	public List<Payment> getPaymentsList() {
+		return paymentsList;
+	}
+
+	public void setPaymentsList(List<Payment> paymentsList) {
+		this.paymentsList = paymentsList;
+	}
+
+	public List<Lease> getLeaseList() {
+		return leaseList;
+	}
+
+	public void setLeaseList(List<Lease> leaseList) {
+		this.leaseList = leaseList;
+	}
+
 }

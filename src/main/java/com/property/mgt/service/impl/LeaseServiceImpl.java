@@ -18,13 +18,13 @@ public class LeaseServiceImpl implements LeaseService {
 	LeaseRepository leaseRepository;
 
 	@Override
-	public void saveUnit(Lease lease) {
+	public void saveLease(Lease lease) {
 		leaseRepository.save(lease);
 	}
 
 	@Override
-	public void findOneUnitById(long leaseId) {
-		leaseRepository.findOne(leaseId);
+	public Lease findOneLeaseById(long leaseId) {
+		return leaseRepository.findOne(leaseId);
 	}
 
 	@Override
