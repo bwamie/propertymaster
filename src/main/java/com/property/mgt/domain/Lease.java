@@ -1,6 +1,8 @@
 package com.property.mgt.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -34,6 +37,8 @@ public class Lease {
 	private String notes;
 	private int rooms;
 	private String status;
+	@OneToMany(mappedBy = "lease", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Payment> paymentsList = new ArrayList<>();
 	
 	public Unit getUnit() {
 		return unit;

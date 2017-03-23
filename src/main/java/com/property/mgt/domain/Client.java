@@ -27,8 +27,6 @@ public abstract class Client {
 	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<View> viewList;
 	@OneToMany(mappedBy = "unit", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Payment> paymentsList = new ArrayList<>();
-	@OneToMany(mappedBy = "unit", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Lease> leaseList = new ArrayList<>();
 
 	public long getClientId() {
@@ -53,14 +51,6 @@ public abstract class Client {
 
 	public void setViewList(List<View> viewList) {
 		this.viewList = viewList;
-	}
-
-	public List<Payment> getPaymentsList() {
-		return paymentsList;
-	}
-
-	public void setPaymentsList(List<Payment> paymentsList) {
-		this.paymentsList = paymentsList;
 	}
 
 	public List<Lease> getLeaseList() {

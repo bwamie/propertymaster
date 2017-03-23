@@ -23,10 +23,9 @@ public class Payment {
 	private double amount;
 	private String paymentMethod;
 	private Date paymentDate;
-	//@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	@JoinColumn(name = "unit_id", referencedColumnName = "id")
+	@JoinColumn(name = "lease_id", referencedColumnName = "id")
 	@ManyToOne
-	private Unit unit;
+	private Lease lease;
 	
 	public Payment(){
 		
@@ -68,11 +67,14 @@ public class Payment {
 	public void setPaymentDate(Date paymentDate) {
 		this.paymentDate = paymentDate;
 	}
-	public Unit getUnit() {
-		return unit;
+
+	public Lease getLease() {
+		return lease;
 	}
-	public void setUnit(Unit unit) {
-		this.unit = unit;
+
+	public void setLease(Lease lease) {
+		this.lease = lease;
 	}
+
 	
 }

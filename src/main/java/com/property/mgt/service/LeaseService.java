@@ -3,8 +3,6 @@ package com.property.mgt.service;
 import java.util.List;
 
 import com.property.mgt.domain.Lease;
-import com.property.mgt.domain.Unit;
-import com.property.mgt.domain.View;
 
 public interface LeaseService {
 	public void saveLease(Lease lease);
@@ -18,4 +16,6 @@ public interface LeaseService {
 	public List<Lease> findLeasesByClientId(long clientId);
 	
 	public List<Lease> findLeasesByUnitId(long unitId);
+
+	public List<Lease> findLeasesByunitIdAndclientId(long unitId, long clientId);
 }

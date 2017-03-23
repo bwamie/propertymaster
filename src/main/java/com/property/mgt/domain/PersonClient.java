@@ -14,10 +14,6 @@ import javax.persistence.OneToOne;
 @Entity
 public class PersonClient extends Client {
 	
-//	@Id
-//	@GeneratedValue(strategy=GenerationType.AUTO)
-//	@Column(name="id")
-	private long personClientId;
 	private Date startdate;
 	private String status;
 	
@@ -28,21 +24,13 @@ public class PersonClient extends Client {
 		
 	}
 
-	public long getPersonClientId() {
-		return personClientId;
-	}
-
-	public void setPersonClientId(long personClientId) {
-		this.personClientId = personClientId;
-	}
-
 	public Date getStartdate() {
 		return startdate;
 	}
 
 	public void setStartdate(Date startdate) {
 		this.startdate = startdate;
-	}
+	} 
 
 	public String getStatus() {
 		return status;

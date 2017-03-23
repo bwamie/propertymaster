@@ -8,23 +8,11 @@ import javax.persistence.Id;
 
 @Entity
 public class Building extends Property {
-	
-//	@Id
-//	@GeneratedValue(strategy=GenerationType.AUTO)
-//	@Column(name="id")
-	private long propertyId;
+
 	private int floors;
 
 	public Building(){
 		
-	}
-
-	public long getPropertyId() {
-		return propertyId;
-	}
-
-	public void setPropertyId(long propertyId) {
-		this.propertyId = propertyId;
 	}
 
 	public int getFloors() {

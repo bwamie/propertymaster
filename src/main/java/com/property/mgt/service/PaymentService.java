@@ -8,9 +8,9 @@ import com.property.mgt.domain.View;
 
 public interface PaymentService {
 	
-	public void saveUnit(Payment payment);
+	public void savePayment(Payment payment);
 
-	public void findOnePaymentById(long paymentId);
+	public Payment findOnePaymentById(long paymentId);
 
 	public List<Payment> findAll();
 	
@@ -19,5 +19,7 @@ public interface PaymentService {
 	public List<Payment> findPaymentByClientId(long clientId);
 	
 	public List<Payment> findPaymentByUnitId(long unitId);
+	
+	public List<Payment> findPaymentByLeaseId(long unitId);
 
 }

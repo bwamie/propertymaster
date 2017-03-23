@@ -31,12 +31,7 @@ public class Unit {
 	private List<View> viewList = new ArrayList<>();
 	@OneToMany(mappedBy = "unit", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Lease> leaseList = new ArrayList<>();
-	
-	@OneToMany(mappedBy = "unit", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Payment> paymentsList = new ArrayList<>();
-	
-	@OneToMany(mappedBy = "unit", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Payment> preferenceList;
+
 	@ManyToOne
 	@JoinColumn(name = "property_id", referencedColumnName = "id")
 	private Property property;
@@ -85,21 +80,6 @@ public class Unit {
 		this.viewList = viewList;
 	}
 
-	public List<Payment> getPaymentsList() {
-		return paymentsList;
-	}
-
-	public void setPaymentsList(List<Payment> paymentsList) {
-		this.paymentsList = paymentsList;
-	}
-
-	public List<Payment> getPreferenceList() {
-		return preferenceList;
-	}
-
-	public void setPreferenceList(List<Payment> preferenceList) {
-		this.preferenceList = preferenceList;
-	}
 
 	public String getUnitType() {
 		return unitType;

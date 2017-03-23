@@ -23,9 +23,9 @@
 	</a>
 	
 	<a
-		href=" <spring:url value="/property/unitlease/${unit.unitId}" /> "
+		href=" <spring:url value="/property/unitLease/${unit.unitId}" /> "
 		class="btn btn-primary"> <span
-		class="glyphicon-info-sign glyphicon" /></span> View Lease
+		class="glyphicon-info-sign glyphicon" /></span> View Unit Lease
 	</a>
 	
 	<a
