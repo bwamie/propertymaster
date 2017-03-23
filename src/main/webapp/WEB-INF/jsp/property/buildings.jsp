@@ -14,6 +14,7 @@
 			<c:forEach items="${buildings}" var="building">
 				<div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
 					<div class="thumbnail">
+					<img src="<c:url value="/resource/images/${building.photoName}.png"></c:url>" alt="image"  style = "width:100%"/>
 						<%-- <img src="<c:url value="/resource/images/${building.propertyId}.png"></c:url>" alt="image"  style = "width:100%"/> --%>
 						<div class="caption">
 							<h3>${building.name}</h3>

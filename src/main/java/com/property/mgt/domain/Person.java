@@ -12,6 +12,15 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Person {
@@ -20,12 +29,25 @@ public class Person {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id")
 	private long personId;
+	
+	@NotEmpty
+	@Size(min = 3, max =15, message="{person.firstname.validation}")
 	private String firstName;
+	
+	@NotEmpty
+	@Size(min = 3, max =15, message="{person.lastname.validation}")	
 	private String lastName;
+	
 	private String sex;
+	
+	@NotNull
+	@DateTimeFormat(pattern = "mm/dd/yyyy")
+	@Past(message = "{birthday.past.Validation}")
+	@Temporal(TemporalType.DATE)
 	private Date birthDate;
 	
-	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@Valid
+	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private Contact contact;
 	
 	public Person(){

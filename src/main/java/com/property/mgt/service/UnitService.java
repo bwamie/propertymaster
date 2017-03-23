@@ -22,4 +22,6 @@ public interface UnitService {
 	
 	public List<View> findViewsByUnitId(long unitId);
 
+	public List<Unit> findUnitsByBuildingId(long buildingId);
+
 }

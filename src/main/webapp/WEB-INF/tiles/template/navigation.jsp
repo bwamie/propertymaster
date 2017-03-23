@@ -3,8 +3,8 @@
 <li><a href="<spring:url value="/welcome" />">Home</a></li>
 <li><a href="<spring:url value="/users" />">Users</a></li>
 <li><a href="<spring:url value="/profile" />">Profile</a></li>
-<li><a href="<spring:url value="/staff" />">Staff</a></li>
-<li><a href="<spring:url value="/clients" />">Clients</a></li>
+<li><a href="<spring:url value="/staffList"/>">Staff</a></li>
+<li><a href="<spring:url value="/listPersonClients"/>">Clients</a></li>
 <li><a href="<spring:url value="/property/home" />">Property</a></li>
 <li><a href="<spring:url value="/contactus" />">Contact Us</a></li>
 <li><a href="<spring:url value="/logout" />">Logout</a></li>

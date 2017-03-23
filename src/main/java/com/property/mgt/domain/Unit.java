@@ -13,6 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class Unit {
@@ -35,6 +39,19 @@ public class Unit {
 	@ManyToOne
 	@JoinColumn(name = "property_id", referencedColumnName = "id")
 	private Property property;
+	
+	//@NotNull
+		@Transient
+	 	@XmlTransient 
+	 	private MultipartFile photo;
+		private String photoName;
+		
+		public MultipartFile getPhoto() {
+			return photo;
+		}
+		public void setPhoto(MultipartFile photo) {
+			this.photo = photo;
+		}
 	
 	public Unit(){
 		
@@ -119,6 +136,12 @@ public class Unit {
 
 	public void setLeaseList(List<Lease> leaseList) {
 		this.leaseList = leaseList;
+	}
+	public String getPhotoName() {
+		return photoName;
+	}
+	public void setPhotoName(String photoName) {
+		this.photoName = photoName;
 	}
 	
 	

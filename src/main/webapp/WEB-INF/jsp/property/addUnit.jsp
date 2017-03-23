@@ -18,7 +18,7 @@
 		</div>
 	</section>
 	<section class="container">
-		<form:form  modelAttribute="unit" class="form-horizontal" action="../addunit" method="post">
+		<form:form  modelAttribute="unit" class="form-horizontal" action="../addunit" method="post"   enctype="multipart/form-data">
 			<fieldset>
 				<legend>Add new Unit</legend>
 
@@ -34,10 +34,10 @@
 					<div class="col-lg-10">
 						<div class="form:input-prepend">
 							<form:select path="unitType">
-							<form:option value="ROOM">Room</form:option>
-							<form:option value="APARTMENT">Apartment</form:option>
-							<form:option value="SPACE">Space</form:option>
-							<form:option value="HALL">Hall</form:option>
+							<form:option value="Room">Room</form:option>
+							<form:option value="Apartment">Apartment</form:option>
+							<form:option value="Space">Space</form:option>
+							<form:option value="Hall">Hall</form:option>
 							</form:select>
 						</div>
 					</div>
@@ -71,11 +71,19 @@
 						<form:radiobutton path="status" value="AVAILABLE" />Available 
 					</div>
 				</div>
+				
+					
+					<div class="form-group">
+					<label class="control-label col-lg-2" for="status">Photo</label>
+					<div class="col-lg-10">
+            <form:input id="photo" path="photo" type="file" /> 
+					</div>
+				</div>
 
 
 				<div class="form-group">
 					<div class="col-lg-offset-2 col-lg-10">
-					<input type="hidden" name="unit.property.propertyId" value="${unit.property.propertyId}"/>
+					<form:hidden path="property.propertyId" value="${unit.property.propertyId}"/>
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 						<input type="submit" id="btnAdd" class="btn btn-primary" value ="Add"/>
 					</div>

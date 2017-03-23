@@ -52,4 +52,9 @@ public class UnitServiceImpl implements UnitService {
 		return viewRepository.viewsByUnitId(unitId);
 	}
 
+	@Override
+	public List<Unit> findUnitsByBuildingId(long buildingId) {
+		return unitRepository.findUnitsByBuildingId( buildingId);
+	}
+
 }

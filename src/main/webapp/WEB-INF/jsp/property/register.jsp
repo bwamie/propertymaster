@@ -18,7 +18,7 @@
 		</div>
 	</section>
 	<section class="container">
-		<form:form  modelAttribute="building" class="form-horizontal" action="register" method="post">
+		<form:form  modelAttribute="building" class="form-horizontal" action="register" method="post"  enctype="multipart/form-data">
 			<fieldset>
 				<legend>Add new product</legend>
 
@@ -90,6 +90,14 @@
 						<form:radiobutton path="status" value="Old" />Available 
 					</div>
 				</div>
+				
+					<div class="form-group">
+					<label class="control-label col-lg-2" for="status">Photo</label>
+					<div class="col-lg-10">
+            <form:input id="photo" path="photo" type="file" /> 
+					</div>
+				</div>
+				
 
 
 				<div class="form-group">

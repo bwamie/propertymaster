@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.property.mgt.domain.BusinessClient;
 import com.property.mgt.domain.Client;
 import com.property.mgt.domain.PersonClient;
@@ -89,6 +89,19 @@ public class ClientController {
 		
 		return "client/addPersonClient";
 	}
+	
+	@RequestMapping(value="/showPersonClientDetail")
+	public @ResponseBody  PersonClient  getRestProduct (@RequestParam("personClientId") Long personClientId  ) {
+		System.out.println(personClientId);
+
+		PersonClient personClient = personClientService.findOne(personClientId);
+		
+System.out.println(personClient);
+System.out.println(personClient.getPerson());
+
+ 		return personClient ;
+	}
+
 	
 	/* 
 	 * Controllers for business clients

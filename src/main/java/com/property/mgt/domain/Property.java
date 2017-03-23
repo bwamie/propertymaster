@@ -13,6 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -35,6 +39,18 @@ public class Property {
 	private List<PropertyStaff> propertyStaffList= new ArrayList<>();
 	@OneToMany(mappedBy = "property", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Unit> unitList = new ArrayList<>();
+	//@NotNull
+	@Transient
+ 	@XmlTransient 
+ 	private MultipartFile photo;
+	private String photoName;
+	
+	public MultipartFile getPhoto() {
+		return photo;
+	}
+	public void setPhoto(MultipartFile photo) {
+		this.photo = photo;
+	}
 
 	public long getPropertyId() {
 		return propertyId;
@@ -122,6 +138,12 @@ public class Property {
 
 	public void setUnitList(List<Unit> unitList) {
 		this.unitList = unitList;
+	}
+	public String getPhotoName() {
+		return photoName;
+	}
+	public void setPhotoName(String photoName) {
+		this.photoName = photoName;
 	}
 
 	

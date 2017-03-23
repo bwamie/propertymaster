@@ -1,14 +1,24 @@
 package com.property.mgt.controller;
 
+import java.io.File;
 import java.util.List;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.property.mgt.domain.Building;
@@ -19,12 +29,16 @@ import com.property.mgt.domain.Lease;
 import com.property.mgt.domain.Payment;
 import com.property.mgt.domain.Property;
 import com.property.mgt.domain.Unit;
+import com.property.mgt.exception.PhotoUploadException;
+import com.property.mgt.exception.PropertyPhotoUploadException;
+import com.property.mgt.exception.UnitPhotoUploadException;
 import com.property.mgt.service.BusinessClientService;
 import com.property.mgt.service.LeaseService;
 import com.property.mgt.service.PaymentService;
 import com.property.mgt.service.PersonClientService;
 import com.property.mgt.service.PropertyService;
 import com.property.mgt.service.UnitService;
+import com.property.mgt.util.SessionIdentifierGenerator;
 
 @Controller
 @RequestMapping("/property")
@@ -47,8 +61,12 @@ public class PropertyController {
 	
 	@Autowired
 	PaymentService paymentService;
+	
+	@Autowired
+	ServletContext servletContext;
 
-	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
+
+	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public String propertyHome() {
 		System.out.println("Helloooo");
 		return "property/propertyHome";
@@ -67,6 +85,25 @@ public class PropertyController {
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String addBuildingPost(@ModelAttribute("building") Building building) {
 		System.out.println(building.getName());
+		
+		building.setPhotoName(SessionIdentifierGenerator.getRandomString());
+		
+		MultipartFile propertyPhoto = building.getPhoto(); 
+		String rootDirectory = servletContext.getRealPath("/");
+		// isEmpty means file exists BUT NO Content
+		if (propertyPhoto != null && !propertyPhoto.isEmpty()) {
+			String fileSeparator = System.getProperty("file.separator");
+			try {
+				propertyPhoto.transferTo(new File(rootDirectory + fileSeparator
+						+ "resources" + fileSeparator + "images"
+						+ fileSeparator + "" + building.getPhotoName() + ".png"));
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new PropertyPhotoUploadException("Building Photo missing!", building);
+			}
+		}else
+			throw new PropertyPhotoUploadException("Building Photo missing!", building);
+		
 		propertyService.saveProperty(building);
 		return "redirect:/property/buildings";
 	}
@@ -105,6 +142,26 @@ public class PropertyController {
 	public String addUnit(@ModelAttribute("unit") Unit unit,
 			RedirectAttributes flashAttributes) {
 		System.out.println(unit.getUnitNumber());
+		
+		unit.setPhotoName(SessionIdentifierGenerator.getRandomString());
+		
+		MultipartFile propertyPhoto = unit.getPhoto(); 
+		String rootDirectory = servletContext.getRealPath("/");
+		// isEmpty means file exists BUT NO Content
+		if (propertyPhoto != null && !propertyPhoto.isEmpty()) {
+			String fileSeparator = System.getProperty("file.separator");
+			try {
+				propertyPhoto.transferTo(new File(rootDirectory + fileSeparator
+						+ "resources" + fileSeparator + "images"
+						+ fileSeparator + "" + unit.getPhotoName() + ".png"));
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new UnitPhotoUploadException("Unit Photo missing!", unit);
+			}
+		}else
+			throw new UnitPhotoUploadException("Unit Photo missing!", unit);
+		
+		
 		unitService.saveUnit(unit);
 		flashAttributes.addFlashAttribute(unit);
 		return "redirect:/property/units";
@@ -119,6 +176,15 @@ public class PropertyController {
 	public String units(Model model) {
 		System.out.println("Units...yyyy....xxx");
 		model.addAttribute("units", unitService.findAll());
+		return "property/units";
+	}
+	
+	@RequestMapping(value = "/buildingUnits", method = RequestMethod.GET)
+	public String buildingUnits(@RequestParam("xyz") long buildingId, Model model) {
+		System.out.println("Units...yyyy....xxx"+buildingId);
+		List<Unit> units = unitService.findUnitsByBuildingId(buildingId);
+		System.out.println(units);
+		model.addAttribute("units", units);
 		return "property/units";
 	}
 
@@ -247,4 +313,39 @@ public class PropertyController {
 		System.out.println("g paments...3");
 		return "property/payments";
 	}
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		// binder.setDisallowedFields(new String[]{"firstName"});
+	}
+
+	@ExceptionHandler(PropertyPhotoUploadException.class)
+	public ModelAndView handleError(HttpServletRequest req,
+			PropertyPhotoUploadException exception) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("errorMsg", exception.getMessage());
+		mav.addObject("building", exception.getProperty());
+		mav.setViewName("property/propertyPhotoUploadError");
+		return mav;
+	}
+	
+	@ExceptionHandler(UnitPhotoUploadException.class)
+	public ModelAndView handleError(HttpServletRequest req,
+			UnitPhotoUploadException exception) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("errorMsg", exception.getMessage());
+		mav.addObject("unit", exception.getUnit());
+		mav.setViewName("property/unitPhotoUploadError");
+		return mav;
+	}
+	
+	@ExceptionHandler(PhotoUploadException.class)
+	public ModelAndView handleError(HttpServletRequest req,
+			PhotoUploadException exception) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("errorMsg", exception.getMessage());
+		mav.setViewName("/photoUpload");
+		return mav;
+	}
+
 }

@@ -1,5 +1,6 @@
 package com.property.mgt.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,16 +12,29 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-public class Staff {
+public class Staff implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 888887661L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id")
 	private long staffId;
+	
+	@NotEmpty
+	@Size(min = 2, max = 40, message = "{Validation.Staff.Position}")
 	private String position;
 	
+	@Valid
 	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL )
 	private Person person;
 	

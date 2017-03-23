@@ -63,15 +63,146 @@
 		<put-attribute name="title" value="Test Page" />
  		<put-attribute name="body" value="/WEB-INF/jsp/test.jsp" />
 	</definition>
+	 
 	
- 	<definition name="propertyPage" extends="baseLayout">
-		<put-attribute name="title" value="Manage Property" />
- 		<put-attribute name="body" value="/WEB-INF/jsp/property/propertyHome.jsp" />
-	</definition> 
 	
-	<definition name="addPropertyPage" extends="baseLayout">
-		<put-attribute name="title" value="Register Property" />
- 		<put-attribute name="body" value="/WEB-INF/jsp/property/addProperty.jsp" />
-	</definition> 
+	<!-- Property JSPs -->
+	
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="Home" />
+		<put-attribute name="heading" value="Manage Properties and Units" />
+		<put-attribute name="tagline" value="Manage all the properties and their respective units in the system." />
+		<put-attribute name="body" value="/WEB-INF/jsp/property/propertyHome.jsp" />
+	</definition>
+	
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="heading" value="Login" />
+		<put-attribute name="tagline" value="Enter your Credentials" />
+		<put-attribute name="body" value="/WEB-INF/jsp/property/register.jsp" />
+	</definition>
+	
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="Add Lease" />
+		<put-attribute name="heading" value="Add Lease" />
+		<put-attribute name="tagline" value="Enter Lease Details" />
+		<put-attribute name="body" value="/WEB-INF/jsp/property/addLease.jsp" />
+	</definition>
+	
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="Add Unit" />
+		<put-attribute name="heading" value="Add Property Unit" />
+		<put-attribute name="tagline" value="Enter Details of the Unit" />
+		<put-attribute name="body" value="/WEB-INF/jsp/property/addUnit.jsp" />
+	</definition>
+	
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="Building Details" />
+		<put-attribute name="heading" value="Building Details" />
+		<put-attribute name="tagline" value="Enter Details of the Unit" />
+		<put-attribute name="body" value="/WEB-INF/jsp/property/buildingDetails.jsp" />
+	</definition>
+	
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="" />
+		<put-attribute name="heading" value="" />
+		<put-attribute name="tagline" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/property/buildingDetails.jsp" />
+	</definition>
+	
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="" />
+		<put-attribute name="heading" value="" />
+		<put-attribute name="tagline" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/property/buildings.jsp" />
+	</definition>
+	
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="" />
+		<put-attribute name="heading" value="" />
+		<put-attribute name="tagline" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/property/leaseDetails.jsp" />
+	</definition>
+	
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="" />
+		<put-attribute name="heading" value="" />
+		<put-attribute name="tagline" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/property/leaseSaveDetails.jsp" />
+	</definition>
+	
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="" />
+		<put-attribute name="heading" value="" />
+		<put-attribute name="tagline" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/property/makePayment.jsp" />
+	</definition>
+	
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="" />
+		<put-attribute name="heading" value="" />
+		<put-attribute name="tagline" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/property/paymentDetails.jsp" />
+	</definition>
+	
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="" />
+		<put-attribute name="heading" value="" />
+		<put-attribute name="tagline" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/property/payments.jsp" />
+	</definition>
+	
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="" />
+		<put-attribute name="heading" value="" />
+		<put-attribute name="tagline" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/property/paymentSavedSuccess.jsp" />
+	</definition>
+	
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="" />
+		<put-attribute name="heading" value="" />
+		<put-attribute name="tagline" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/property/propertyDetails.jsp" />
+	</definition>
+	
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="" />
+		<put-attribute name="heading" value="" />
+		<put-attribute name="tagline" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/property/propertyPhotoUploadError.jsp" />
+	</definition>
+	
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="" />
+		<put-attribute name="heading" value="" />
+		<put-attribute name="tagline" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/property/unitDetails.jsp" />
+	</definition>
+	
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="" />
+		<put-attribute name="heading" value="" />
+		<put-attribute name="tagline" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/property/unitLease.jsp" />
+	</definition>
+	
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="" />
+		<put-attribute name="heading" value="" />
+		<put-attribute name="tagline" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/property/unitPhotoUploadError.jsp.jsp" />
+	</definition>
+	
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="" />
+		<put-attribute name="heading" value="" />
+		<put-attribute name="tagline" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/property/units.jsp" />
+	</definition>
+	
+	
+	
+	<!-- Property JSPs ends here -->
 	 	
 </tiles-definitions>
