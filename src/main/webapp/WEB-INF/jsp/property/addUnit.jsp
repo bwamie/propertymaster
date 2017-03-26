@@ -11,26 +11,35 @@
 <body>
 	<section>
 		<div class="jumbotron">
+  			<div class="pull-right" style="padding-right:50px">
+				<a href="?language=en" >English</a>|<a href="?language=fr_CA" >French</a>					
+			</div>
+			
+		</div>
+	</section>
+	<section>
+		<div class="jumbotron">
   			<h4>Building Details</h4>
 	<h6>${unit.property.name}</h6>
 	<p>Type: ${unit.property.type}</p>
 	<p>Description:${unit.property.description}</p>
 		</div>
 	</section>
-	<section class="container">
+	<section class="container" >
 		<form:form  modelAttribute="unit" class="form-horizontal" action="../addunit" method="post"   enctype="multipart/form-data">
 			<fieldset>
 				<legend>Add new Unit</legend>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="unitNumber">Unit Number:</label>
+					<label class="control-label col-lg-2" for="unitNumber"><spring:message code="form.unit.unitNumber" />:</label>
 					<div class="col-lg-10">
 						<form:input path="unitNumber" type="text" class="form:input-large"/>
 					</div>
+					<form:errors path="unitNumber" cssClass="text-danger"/>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="type">Unit Type:</label>
+					<label class="control-label col-lg-2" for="type"><spring:message code="form.unit.unitType" />:</label>
 					<div class="col-lg-10">
 						<div class="form:input-prepend">
 							<form:select path="unitType">
@@ -41,40 +50,45 @@
 							</form:select>
 						</div>
 					</div>
+					<form:errors path="unitType" cssClass="text-danger"/>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="description">Description:</label>
+					<label class="control-label col-lg-2" for="description"><spring:message code="form.unit.description" />:</label>
 					<div class="col-lg-10">
 						<form:textarea path="description" rows = "2"/>
 					</div>
+					<form:errors path="description" cssClass="text-danger"/>
 				</div>
 				
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="city">Size:</label>
+					<label class="control-label col-lg-2" for="city"><spring:message code="form.unit.size" />:</label>
 					<div class="col-lg-10">
 						<form:input path="size" type="text" class="form:input-large"/>
 					</div>
+					<form:errors path="size" cssClass="text-danger"/>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="city">Number of Rooms:</label>
+					<label class="control-label col-lg-2" for="city"><spring:message code="form.unit.rooms" />:</label>
 					<div class="col-lg-10">
 						<form:input path="rooms" type="text" class="form:input-large"/>
 					</div>
+					<form:errors path="rooms" cssClass="text-danger"/>
 				</div>
 				
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="status">Status:</label>
+					<label class="control-label col-lg-2" for="status"><spring:message code="form.unit.status" />:</label>
 					<div class="col-lg-10">
 						<form:radiobutton path="status" value="OCCUPIED" />Occupied 
 						<form:radiobutton path="status" value="AVAILABLE" />Available 
 					</div>
+					<form:errors path="status" cssClass="text-danger"/>
 				</div>
 				
 					
 					<div class="form-group">
-					<label class="control-label col-lg-2" for="status">Photo</label>
+					<label class="control-label col-lg-2" for="status"><spring:message code="form.unit.photo" />:</label>
 					<div class="col-lg-10">
             <form:input id="photo" path="photo" type="file" /> 
 					</div>

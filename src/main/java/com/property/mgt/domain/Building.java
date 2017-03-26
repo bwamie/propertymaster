@@ -1,21 +1,19 @@
 package com.property.mgt.domain;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Building extends Property {
 
-	private int floors;
+	private Integer floors;
 
 	public Building(){
 		
 	}
 
-	public int getFloors() {
+	@NotNull
+	public Integer getFloors() {
 		return floors;
 	}
 

@@ -19,7 +19,7 @@
 	</section>
 	<section class="container">
 	<h2 style="color:red;">${errorMsg }</h2>
-		<form:form  modelAttribute="unit" class="form-horizontal" action="../addunit" method="post"   enctype="multipart/form-data">
+		<form:form  modelAttribute="unit" class="form-horizontal" action="addunit" method="post"   enctype="multipart/form-data">
 			<fieldset>
 				<legend>Add new Unit</legend>
 

@@ -14,8 +14,10 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
@@ -27,13 +29,21 @@ public class Property {
 	@Column(name = "id")
 	private long propertyId;
 
+	@NotEmpty
+	@Size(min=2, max=50, message="{Size.field.error}")
 	private String name;
+	@NotEmpty
 	private String description;
+	@NotEmpty
 	private String type;
+	@NotEmpty
 	private String address;
+	@NotEmpty
 	private String city;
+	@NotEmpty
 	private String state;
 	private int zipCode;
+	@NotEmpty(message="{Property.status}")
 	private String status;
 	@OneToMany(mappedBy = "property", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<PropertyStaff> propertyStaffList= new ArrayList<>();

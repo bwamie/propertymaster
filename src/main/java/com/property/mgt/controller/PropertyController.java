@@ -5,10 +5,12 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -27,6 +30,7 @@ import com.property.mgt.domain.BusinessClient;
 import com.property.mgt.domain.Contact;
 import com.property.mgt.domain.Lease;
 import com.property.mgt.domain.Payment;
+import com.property.mgt.domain.PersonClient;
 import com.property.mgt.domain.Property;
 import com.property.mgt.domain.Unit;
 import com.property.mgt.exception.PhotoUploadException;
@@ -83,8 +87,9 @@ public class PropertyController {
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String addBuildingPost(@ModelAttribute("building") Building building) {
-		System.out.println(building.getName());
+	public String addBuildingPost(@Valid @ModelAttribute("building") Building building, BindingResult result) {
+		if(result.hasErrors())
+			return "register";
 		
 		building.setPhotoName(SessionIdentifierGenerator.getRandomString());
 		
@@ -139,9 +144,10 @@ public class PropertyController {
 	}
 
 	@RequestMapping(value = "/addunit", method = RequestMethod.POST)
-	public String addUnit(@ModelAttribute("unit") Unit unit,
+	public String addUnit(@Valid @ModelAttribute("unit") Unit unit, BindingResult result,
 			RedirectAttributes flashAttributes) {
-		System.out.println(unit.getUnitNumber());
+		if(result.hasErrors())
+			return "addUnit";
 		
 		unit.setPhotoName(SessionIdentifierGenerator.getRandomString());
 		
@@ -194,10 +200,20 @@ public class PropertyController {
 		model.addAttribute("unit", unitService.findOneUnitById(initId));
 		return "unitDetails";
 	}
+	
+	
 
 	/*
 	 * Lease Management
 	 */
+	@RequestMapping(value = "/searchClient", method = RequestMethod.GET)
+	public @ResponseBody List<PersonClient> searchClient(@RequestParam("firstName") String firstName, Model model) {
+		System.out.println("searching.......");	
+		List<PersonClient> clients =personClientService.getClientByFirstName(firstName);
+		System.out.println(clients.size());
+		return clients;
+	}
+	
 	@RequestMapping(value = "/addlease/{id}", method = RequestMethod.GET)
 	public String addLease(@ModelAttribute("lease") Lease lease,
 			@PathVariable("id") long unitId, Model model) {

@@ -18,9 +18,9 @@ public class Payment {
 	@Column(name="id")
 	private long paymentId;
 	
-	private int month;
-	private int year;
-	private double amount;
+	private Integer month;
+	private Integer year;
+	private Double amount;
 	private String paymentMethod;
 	private Date paymentDate;
 	@JoinColumn(name = "lease_id", referencedColumnName = "id")

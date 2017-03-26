@@ -5,7 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet"	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+<%--  	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="<spring:url value="/resource/js/ajax.js"/>"></script>
+<style type="text/css">@import url("<spring:url value="/resource/css/rest.css"/>");</style>
+<style type="text/css">@import url("<spring:url value="/resource/css/style.css"/>");</style>
+<style type="text/css">@import url("<spring:url value="/resource/css/main.css"/>");</style> --%>
 <title>Add Unit Lease</title>
 </head>
 <body>
@@ -18,9 +22,17 @@
 		</div>
 	</section>
 	<section class="container">
+	<%-- 
+	<form:form id="searchForm">
+	<label>Search Client by Name:</label><input type="text" placeholder="Enter client name" onkeyup="makeAjaxCall()" id="search" path=""/>
+	<input type="button" value="Search" />
+	</form:form> --%>
+	<div id="searchResults"></div>
+	
 		<form:form  modelAttribute="lease" class="form-horizontal" action="../addlease" method="post">
 			<fieldset>
 				<legend>Add new Lease</legend>
+				
 
 				<div class="form-group">
 					<label class="control-label col-lg-2" for="startDate">Start Date:</label>

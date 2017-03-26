@@ -15,4 +15,6 @@ public interface PersonClientService {
 
 	void delete(PersonClient findOne);
 
+	List<PersonClient> getClientByFirstName(String firstName);
+
 }

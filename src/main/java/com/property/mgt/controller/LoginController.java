@@ -31,7 +31,7 @@ public class LoginController {
             model.addAttribute("error", "Invalid username and password!");
         }
 
-        return "login";
+        return "login/login";
     }
 	
 //	@RequestMapping(value={"/login"}, method = RequestMethod.GET)

@@ -40,4 +40,9 @@ public class PersonClientServiceImpl implements PersonClientService {
 		
 	}
 
+	@Override
+	public List<PersonClient> getClientByFirstName(String firstName) {
+		return personClientRepository.getClientByFirstName(firstName);
+			}
+
 }

@@ -14,8 +14,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
@@ -25,10 +27,15 @@ public class Unit {
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long unitId;
+	@NotEmpty
+	@Size(min=2, max=12, message="{Size.field.error}")
 	private String unitNumber;
 	private String size;
+	@NotEmpty
 	private String description;
+	@NotEmpty
 	private String unitType;
+	@NotEmpty
 	private String status;
 	private int rooms;
 	@OneToMany(mappedBy = "unit", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
