@@ -6,9 +6,12 @@
 	rel="stylesheet">
 
 <div class="jumbotron">
+
 	<h1>
+		
 		<tiles:insertAttribute name="heading" />
 	</h1>
+	
 	<p>
 		<tiles:insertAttribute name="tagline" />
 	</p>

@@ -69,17 +69,17 @@ public class PropertyController {
 	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public String propertyHome() {
 		System.out.println("Helloooo");
-		return "property/propertyHome";
+		return "propertyHome";
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String addProperty(@ModelAttribute("building") Building building) {
-		return "property/register";
+		return "register";
 	}
 
 	@RequestMapping(value = "/addBuilding", method = RequestMethod.GET)
 	public String addBuilding(@ModelAttribute("building") Building building) {
-		return "property/addBuilding";
+		return "addBuilding";
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -110,20 +110,20 @@ public class PropertyController {
 
 	@RequestMapping(value = "/building", method = RequestMethod.GET)
 	public String building() {
-		return "property/buildingDetails";
+		return "buildingDetails";
 	}
 
 	@RequestMapping(value = "/buildings", method = RequestMethod.GET)
 	public String buildings(Model model) {
 		model.addAttribute("buildings", propertyService.findAllBuildings());
-		return "property/buildings";
+		return "buildings";
 	}
 
 	@RequestMapping(value = "/building/{id}", method = RequestMethod.GET)
 	public String buildings(@PathVariable("id") long propertyId, Model model) {
 		model.addAttribute("building",
 				propertyService.findOnePropertyById(propertyId));
-		return "property/buildingDetails";
+		return "buildingDetails";
 	}
 
 	/*
@@ -135,7 +135,7 @@ public class PropertyController {
 		Property property = propertyService.findOnePropertyById(propertyId);
 		unit.setProperty(property);
 		model.addAttribute("unit", unit);
-		return "property/addUnit";
+		return "addUnit";
 	}
 
 	@RequestMapping(value = "/addunit", method = RequestMethod.POST)
@@ -169,14 +169,14 @@ public class PropertyController {
 
 	@RequestMapping(value = "/unit", method = RequestMethod.GET)
 	public String unit() {
-		return "property/unitDetails";
+		return "unitDetails";
 	}
 
 	@RequestMapping(value = "/units", method = RequestMethod.GET)
 	public String units(Model model) {
 		System.out.println("Units...yyyy....xxx");
 		model.addAttribute("units", unitService.findAll());
-		return "property/units";
+		return "units";
 	}
 	
 	@RequestMapping(value = "/buildingUnits", method = RequestMethod.GET)
@@ -185,14 +185,14 @@ public class PropertyController {
 		List<Unit> units = unitService.findUnitsByBuildingId(buildingId);
 		System.out.println(units);
 		model.addAttribute("units", units);
-		return "property/units";
+		return "units";
 	}
 
 	@RequestMapping(value = "/unit/{id}", method = RequestMethod.GET)
 	public String init(@PathVariable("id") long initId, Model model) {
 		System.out.println("Unit.......");
 		model.addAttribute("unit", unitService.findOneUnitById(initId));
-		return "property/unitDetails";
+		return "unitDetails";
 	}
 
 	/*
@@ -204,7 +204,7 @@ public class PropertyController {
 		Unit unit = unitService.findOneUnitById(unitId);
 		lease.setUnit(unit);
 		model.addAttribute("lease", lease);
-		return "property/addLease";
+		return "addLease";
 	}
 
 	@RequestMapping(value = "/addlease", method = RequestMethod.POST)
@@ -230,14 +230,14 @@ public class PropertyController {
 
 	@RequestMapping(value = "/leaseSaveDetails", method = RequestMethod.GET)
 	public String leaseSaveDetails() {
-		return "property/leaseSaveDetails";
+		return "leaseSaveDetails";
 	}
 
 	@RequestMapping(value = "/lease/{id}", method = RequestMethod.GET)
 	public String leaseDetails(@PathVariable("id") long leaseId, Model model) {
 		System.out.println("Lease.......");
 		model.addAttribute("lease", leaseService.findOneLeaseById(leaseId));
-		return "property/leaseDetails";
+		return "leaseDetails";
 	}
 
 	@RequestMapping(value = "/unitLease/{id}", method = RequestMethod.GET)
@@ -248,7 +248,7 @@ public class PropertyController {
 		System.out.println(ls);
 		model.addAttribute("leases", ls);
 		model.addAttribute("lease", ls.get(0));
-		return "property/unitLease";
+		return "unitLease";
 	}
 
 	@RequestMapping(value = "/clientlease/{id}", method = RequestMethod.GET)
@@ -258,7 +258,7 @@ public class PropertyController {
 
 		model.addAttribute("leases", ls);
 		model.addAttribute("lease", ls.get(0));
-		return "property/unitUlease";
+		return "unitUlease";
 	}
 
 	@RequestMapping(value = "/makepayment/{id}", method = RequestMethod.GET)
@@ -270,7 +270,7 @@ public class PropertyController {
 		System.out.println("Making paments...2");
 		model.addAttribute("payment", payment);
 		System.out.println("Making paments...3");
-		return "property/MakePayment";
+		return "MakePayment";
 	}
 	
 	@RequestMapping(value = "/makepayment", method = RequestMethod.POST)
@@ -291,7 +291,7 @@ public class PropertyController {
 
 	@RequestMapping(value = "/paymentSavedSuccess", method = RequestMethod.GET)
 	public String paymentSavedSuccess() {
-		return "property/paymentSavedSuccess";
+		return "paymentSavedSuccess";
 	}
 	
 	@RequestMapping(value = "/paymentDetails/{id}", method = RequestMethod.GET)
@@ -301,7 +301,7 @@ public class PropertyController {
 		System.out.println("eg paments...2");
 		model.addAttribute("payment", payment);
 		System.out.println("eg paments...3");
-		return "property/paymentDetails";
+		return "paymentDetails";
 	}
 
 	@RequestMapping(value = "/payments/{id}", method = RequestMethod.GET)
@@ -311,7 +311,7 @@ public class PropertyController {
 		System.out.println("g paments...2");
 		model.addAttribute("payments", payments);
 		System.out.println("g paments...3");
-		return "property/payments";
+		return "payments";
 	}
 	
 	@InitBinder
@@ -325,7 +325,7 @@ public class PropertyController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("errorMsg", exception.getMessage());
 		mav.addObject("building", exception.getProperty());
-		mav.setViewName("property/propertyPhotoUploadError");
+		mav.setViewName("propertyPhotoUploadError");
 		return mav;
 	}
 	
@@ -335,7 +335,7 @@ public class PropertyController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("errorMsg", exception.getMessage());
 		mav.addObject("unit", exception.getUnit());
-		mav.setViewName("property/unitPhotoUploadError");
+		mav.setViewName("unitPhotoUploadError");
 		return mav;
 	}
 	

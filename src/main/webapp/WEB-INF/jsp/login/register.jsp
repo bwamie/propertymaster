@@ -10,6 +10,17 @@
 </head>
 <body>
 <section>
+	<table width="100%" align="center">
+			<tr valign="middle" align="center">
+				<td><img
+					src="<c:url value="/resource/images/curiosity.jpg"></c:url>"
+					alt="image" style="width: 150px" /></td>
+				<td><h1 class="text-muted">Property Management System</h1></td>
+				<td><img
+					src="<c:url value="/resource/images/home1.jpg"></c:url>"
+					alt="image" style="width: 100px" /></td>
+			</tr>
+		</table>
     <div class="jumbotron">
         <div class="container">
             <h1>Welcome to register </h1>

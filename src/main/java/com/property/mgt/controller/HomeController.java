@@ -15,7 +15,7 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 public class HomeController {
 
 	@RequestMapping({"/","/welcome"})
-	public String welcome(HttpServletRequest request,HttpServletResponse response, Locale locale) {
+	public String welcomex(HttpServletRequest request,HttpServletResponse response, Locale locale) {
 		// Her's how to Manually set Locale
 	//	RequestContextUtils.getLocaleResolver(request).setLocale(request, response, Locale.ENGLISH);
 		

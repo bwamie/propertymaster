@@ -9,14 +9,14 @@
 <title>Products</title>
 </head>
 <body>
-	<section>
+	<!-- <section>
 		<div class="jumbotron">
   			<div class="pull-right" style="padding-right:50px">
 				<a href="?language=en" >English</a>|<a href="?language=nl_NL" >Dutch</a>					
 			</div>
 			
 		</div>
-	</section>
+	</section> -->
 	<section class="container">
 		<form:form  modelAttribute="building" class="form-horizontal" action="register" method="post"  enctype="multipart/form-data">
 			<fieldset>

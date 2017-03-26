@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.property.mgt.domain.Authority;
 import com.property.mgt.domain.User;
@@ -23,30 +24,39 @@ public class LoginController {
 
     @Autowired
     UserService userService;
-	
-	@RequestMapping(value={"/login"}, method = RequestMethod.GET)
-    public String getLoginPage(@ModelAttribute("user")User user, Model model) {
-        Authority client = new Authority("client");
-        Authority staff = new Authority("staff");
+    
+    @RequestMapping(value={"/login"}, method = RequestMethod.GET)
+    public String getLoginPage(@RequestParam(value = "error", required = false) String error, @ModelAttribute("user")User user, Model model) {
+        if (error != null) {
+            model.addAttribute("error", "Invalid username and password!");
+        }
 
-        LinkedList<Authority> authorities1 = new LinkedList<Authority>();
-        LinkedList<Authority> authorities2 = new LinkedList<Authority>();
-        authorities1.add(client);
-        authorities2.add(staff);
-
-        User user1 = new User("alex", "alex");
-        user1.setAuthorities(authorities1);
-        user1.setRole("staff");
-
-        User user2 = new User("xie", "xie");
-        user2.setAuthorities(authorities2);
-        user2.setRole("client");
-
-        userService.addUser(user1);
-        userService.addUser(user2);       
-		
-		return "login/login";
+        return "login";
     }
+	
+//	@RequestMapping(value={"/login"}, method = RequestMethod.GET)
+//    public String getLoginPage(@ModelAttribute("user")User user, Model model) {
+//        Authority client = new Authority("client");
+//        Authority staff = new Authority("staff");
+//
+//        LinkedList<Authority> authorities1 = new LinkedList<Authority>();
+//        LinkedList<Authority> authorities2 = new LinkedList<Authority>();
+//        authorities1.add(client);
+//        authorities2.add(staff);
+//
+//        User user1 = new User("alex", "alex");
+//        user1.setAuthorities(authorities1);
+//        user1.setRole("staff");
+//
+//        User user2 = new User("xie", "xie");
+//        user2.setAuthorities(authorities2);
+//        user2.setRole("client");
+//
+//        userService.addUser(user1);
+//        userService.addUser(user2);       
+//		
+//		return "login/login";
+//    }
 
     @RequestMapping(value="/postlogin", method = RequestMethod.POST)
     public String loginAction(@Valid @ModelAttribute("user")User loginUser, BindingResult result, Model model) {

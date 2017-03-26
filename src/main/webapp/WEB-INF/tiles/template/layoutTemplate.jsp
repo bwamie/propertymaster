@@ -24,11 +24,17 @@
 <body>
 
 	<div class="container">
+	<table width="100%" align="center">
+			<tr valign="middle"  align="center">
+			<td><img src="<c:url value="/resource/images/curiosity.jpg"></c:url>" alt="image"  style = "width:150px"/></td>
+			<td><h1 class="text-muted">Property Management System</h1></td>
+			<td><img src="<c:url value="/resource/images/home1.jpg"></c:url>" alt="image"  style = "width:100px"/></td>
+			</tr>
+			</table>
 		<div class="header">
 			<ul class="nav nav-pills pull-right">
 				<tiles:insertAttribute name="navigation" />
 			</ul>
-			<h1 class="text-muted">Property Management</h1>
 		</div>
 		
 		<hr />

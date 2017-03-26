@@ -10,8 +10,14 @@
 	<h3>
 		<spring:message code="welcome.message" text="default text" />
 	</h3>
-
 	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	
 
 </body>
 </html>

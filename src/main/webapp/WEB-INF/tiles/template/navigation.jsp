@@ -7,7 +7,7 @@
 <li><a href="<spring:url value="/listPersonClients"/>">Clients</a></li>
 <li><a href="<spring:url value="/property/home" />">Property</a></li>
 <li><a href="<spring:url value="/contactus" />">Contact Us</a></li>
-<li><a href="<spring:url value="/logout" />">Logout</a></li>
+<li><a href="<spring:url value="/doLogout" />">Logout</a></li>
 <li><a href="<spring:url value="/saveTest" />">Test</a></li>
 <!-- Language : <a href="?language=en_US">English</a>|<a href="?language=fr_CA">French</a> -->
 
